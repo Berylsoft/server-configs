@@ -3,11 +3,8 @@
 # https://github.com/ueffel/caddy-brotli
 # https://github.com/caddy-dns/edgeone
 
-(_tls_intermediate) {
+(_tls_intermediate_auto) {
 	tls {
-		# https://ssl-config.mozilla.org/#server=caddy&version=2.8.4&config=intermediate&guideline=5.7
-		ciphers TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-		curves x25519 secp256r1 secp384r1
 		protocols tls1.2 tls1.3
 
 		# for EdgeOne
@@ -30,7 +27,7 @@
 }
 
 (_basic) {
-	import _tls_intermediate
+	import _tls_intermediate_auto
 	import _compress
 	import _access_log
 }
