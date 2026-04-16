@@ -56,7 +56,7 @@
 	import _access_log
 	import _rate_limit_http
 
-	redir https:{host}{uri} 301
+	redir https://{host}{uri} 301
 }
 
 (app_openlist) {
