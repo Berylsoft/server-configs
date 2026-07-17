@@ -44,7 +44,7 @@
 	}
 }
 
-(_rate_limit_app_openlist) {
+(_rate_limit_app_phcl) {
 	rate_limit {
 		key {http.request.remote.host}
 		max_events 20
@@ -59,10 +59,10 @@
 	redir https://{host}{uri} 301
 }
 
-(app_openlist) {
+(app_phcl) {
 	import _basic
 	import _hsts
-	import _rate_limit_app_openlist
+	import _rate_limit_app_phcl
 }
 
 {
@@ -101,13 +101,13 @@
 	}
 }
 
-nbcshare.lm.pc.wiki:80 {
+phcl.lm.pc.wiki:80 {
 	import http
 }
 
-nbcshare.lm.pc.wiki:443 {
-	import app_openlist
+phcl.lm.pc.wiki:443 {
+	import app_phcl
 
-	reverse_proxy http://127.0.0.1:38010
+	reverse_proxy 127.0.0.1:38010
 	# X-Forwarded-For added by default
 }
